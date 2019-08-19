@@ -1,3 +1,4 @@
 .idea/
 
 venv/
+firebase.service.json
