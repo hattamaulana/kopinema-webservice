@@ -5,7 +5,6 @@ from flask_restful import Api
 from firebase_admin import db
 from firebase_admin import credentials
 
-
 app = Flask(__name__)
 api = Api(app)
 cred = credentials.Certificate("firebase.service.json")
@@ -15,7 +14,7 @@ cred = credentials.Certificate("firebase.service.json")
     granting admin privileges
 """
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://kopinema-cc4c2.firebaseio.com'
+    'databaseURL': 'https://kopinema-cc4c2.firebaseio.com/'
 })
 
 """
@@ -25,6 +24,12 @@ firebase_admin.initialize_app(cred, {
 """
 ref = db.reference('database')
 
+"""
+    Register API
+"""
+import API
+
+api.add_resource(API.Board, '/board/')
 
 if __name__ == '__main__':
     app.run(debug=True)
