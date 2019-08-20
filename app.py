@@ -35,4 +35,4 @@ api.add_resource(API.Queue, '/queue/<id>')
 api.add_resource(API.Served, '/served')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='192.168.1.4', debug=False)
