@@ -3,7 +3,7 @@ import json
 from flask_restful import Resource, reqparse
 from firebase_admin import db
 
-from .Queue import __format__, __id__
+from .queue import __format__, __id__
 
 __ref__ = 'database/served'
 
@@ -20,7 +20,7 @@ class Served(Resource):
         self._parser.add_argument(__id__)
 
     def post(self):
-        from .Queue import __is_complete__, __rasio__, __ref__ as queue
+        from .queue import __is_complete__, __rasio__, __ref__ as queue
 
         args = self._parser.parse_args()
         if args[__is_complete__] == 'true':
