@@ -24,7 +24,6 @@ class Board(Resource):
 
     def post(self):
         data = self._parser.parse_args()
-        print(data)
         exists = False
         snapshot = self._ref.get()
 
