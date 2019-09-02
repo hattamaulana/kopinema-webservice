@@ -1,3 +1,14 @@
+"""
+Class ini digunakan untuk menghandle semua request pada route /queue/served.
+Method yang disediakan pada Route ini adalah :
+- POST
+
+Route ini digunakan untuk :
+Menyimpan dan memanipulasi data antrian
+yang sudah diprosess. Dan setelah success menghapus data
+akan menyimpan kembali ke dalam referece /database/served
+"""
+
 import json
 
 from flask_restful import Resource, reqparse

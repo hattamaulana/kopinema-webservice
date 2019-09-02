@@ -1,3 +1,13 @@
+"""
+Class ini digunakan untuk menghandle semua request pada route /queue/<id>.
+Dimana parameter id yang dibutuhkan adalah Id dari Board/Device IoT.
+Method yang disediakan pada Route ini adalah :
+- GET
+
+Route ini digunakan untuk :
+Mengambil data berdasarkan waktu yang pertama kali disimpan.
+"""
+
 from flask_restful import Resource, reqparse
 from firebase_admin import db
 from datetime import datetime
@@ -29,6 +39,23 @@ class Queue(Resource):
     _ref = db.reference(__ref__)
 
     def get(self, id):
+        """
+        Fungsi merupakan blueprint untuk menghandle
+        requests GET dengan parameter id yaiut ID dari Board/Device IoT.
+
+        Pada method ini akan terjadi operasi seperti :
+        - Mengambil data dari Firebase Realtime Database dengan
+          reference /database/queue.
+
+        - Melakukan Searching data sesuai dengan
+          parameter id.
+
+        - Melakukan Sorting berdasarkan time.
+
+        :return: JSON Format, Jika tidak ada kesalahan operasi
+            seharusnya akan memberikan response data yang
+            pertama dari hasil sorting dan status success.
+        """
         res = []
         snapshot = self._ref.get()
 
